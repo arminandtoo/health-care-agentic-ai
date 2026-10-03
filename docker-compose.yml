@@ -1,0 +1,14 @@
+services:
+  redis:
+    image: redis/redis-stack-server:latest
+    container_name: health-care-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    environment:
+      - REDIS_ARGS=--appendonly yes
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:
